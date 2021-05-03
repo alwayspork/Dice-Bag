@@ -1,68 +1,101 @@
-<!DOCTYPE html> 
+
+<!DOCTYPE html>
 <html>
+
 <head>
+  <meta charset="UTF-8">
+  <title>Dice Bag, a Web App for Tabletop Gamers</title>
+  <meta name="description" content="Dice Bag replaces your trusty dice bag with an app that has the dynamic ability to change the number of sides on the die or the amount of dice to be rolled.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="images/favicon.ico" />
 
-<meta charset="UTF-8">
-<title>Dice Bag</title>
+  <!-- CSS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link href="styles/stylesheet.css" rel="stylesheet" type="text/css"/>
 
-<!-- CSS Includes -->
-<link href="includes/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
-<link href="includes/stylesheet.css" rel="stylesheet" type="text/css"/>
-<link href="themes/jquery.mobile.icons.min.css" rel="stylesheet" type="text/css"/>
-<link href="themes/theme.min.css" rel="stylesheet" type="text/css"/>
-<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+  <!-- Javascript -->
+  <script src="js/jquery-1.10.2.min.js"></script>
+</head>
 
-<!-- Javascript Includes -->
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
-<script src="includes/script.js" type="text/javascript">
-</script>
-<script src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js" type="text/javascript"></script>
-
-<!-- DLRNG include-->
-<script src="includes/dlrng.js" type="text/javascript"></script>
-
-</head> 
 <body>
+  <div class="page">
+    <div class="header">
 
-<!-- Main app screen -->
-<div data-role="page" id="page">
-    <div id="header" data-role="header">
-          <h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Dice Bag</h1>
-          <a class="ui-btn-right ui-btn ui-btn-icon-notext ui-nosvg ui-icon-grid ui-btn-corner-all ui-shadow" title=" Navigation " data-form="ui-icon" href="#page2"> </a>
-	</div>
+      <h1 class="header__heading">Dice Bag</h1>
 
-	<div data-role="content" id="content">	
-          <div class="die">
-          </div>		
+      <div class="changeTypeOfDie change-dice js-change-dice-type">
+
+        <button class="change-dice__option js-change-dice-type-toggle"><img src="images/6sided6.png" /></button>
+
+        <ul class="change-dice__dropdown change-dice__dropdown--type">
+
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="3"><img src="images/3sided3.png" /></button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="4"><img src="images/4sided4.png" /></button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="6"><img src="images/6sided6.png" /></button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="8"><img src="images/8sided8.png" /></button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="10"><img src="images/10sided10.png" /></button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="12"><img src="images/12sided12.png" /></button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="20"><img src="images/20sided20.png" /></button>
+          </li>
+<!--           <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="percent"><img src="images/percentsidedpercent.png" /></button>
+          </li> -->
+
+        </ul>
+      </div>
+
+      <div class="changeHowManyDice change-dice change-dice--count js-change-dice-count">
+
+        <button class="change-dice__option js-change-dice-count-toggle">1</button>
+
+        <ul class="change-dice__dropdown change-dice__dropdown--count">
+
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="1">1</button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="2">2</button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="3">3</button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="4">4</button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="5">5</button>
+          </li>
+          <li class="change-dice__dropdown-item">
+            <button class="change-dice__option" value="6">6</button>
+          </li>
+
+        </ul>
+      </div>
     </div>
-    
-	<div data-role="footer" id="footer">
-          <span>
-          	Hit <button class="btn1" onClick="rollDie()">here</button> to roll the die!
-          </span>
-    </div>
-</div>
 
-<!-- Second page, unused for now -->
-<div data-role="page" id="page2">
-    <div data-role="header">
-          <a class="ui-btn-left ui-btn ui-btn-icon-notext ui-alt-icon ui-nosvg ui-icon-back ui-btn-corner-all ui-shadow" title=" Navigation " data-form="ui-icon" href="#page"> </a>
-          <h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Settings</h1>
+    <div class="content">
+      <div class="dieimage"></div>
     </div>
- 	<div class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a" role="main">
-		<div data-role="fieldcontain">
-			<select name="select-choice" id="select-choice-a" data-native-menu="false" data-theme="a" data-form="ui-btn-up-a">
-				<option value="standard">6 Sided Die</option>
-				<option value="rush">10 Sided Die</option>
-				<option value="express">12 Sided Die</option>
-				<option value="overnight">20 Sided Die</option>
-			</select>
-
-		</div>
-	
+    <div class="footer">
+      <span>Tap the grid to roll!</span>
     </div>
-</div>
+  </div>
 
+  <script src="js/script.js" type="text/javascript"></script>
+  <script src="js/jqueryrotate.js" type="text/javascript"></script>
 </body>
 </html>

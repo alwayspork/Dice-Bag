@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* CSS Document */
+* {
+	position: relative;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Questrial', sans-serif /*{global-font-family}*/;
+}
+img {
+	width: 100%;
+}
+.page {
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	background: url(../images/gridme.png) 0 0;
+}
+
+.header {
+	z-index: 10;
+	position: absolute;
+	width: 100%;
+	margin: 0;
+	padding: 15px 0;
+	text-align: center;
+	background: #dcdcdc;
+	overflow: visible;
+}
+
+	.header__heading {
+		margin: 0;
+		font-size: 16px;
+	}
+
+.change-dice {
+	display: inline-block;
+	position: absolute;
+	top: 7px;
+	left: 5px;
+}
+
+.change-dice--count {
+	left: 40px;
+}
+
+	.change-dice__option {
+		display: block;
+		height: 30px;
+		width: 30px;
+		margin: 0;
+		padding: 0;
+		font-size: 13px;
+		border-radius: 4px;
+		background-color: #888;
+	    border: 1px solid #ddd;
+	    color: #fff;
+	    font-weight: normal;
+	}
+
+	.change-dice__option:hover,
+	.change-dice__option--selected {
+		background-color: #555;
+	}
+
+	.change-dice__dropdown {
+		padding: 0;
+		margin: 0;
+	}
+
+		.change-dice__dropdown-item {
+			list-style: none;
+			display: block;
+			overflow: hidden;
+			height: 0px;
+			transition: .5s ease all;
+		}
+
+		.change-dice--tapped .change-dice__dropdown-item {
+			height: 30px;
+		}
+
+.content {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Die starts below main screen */
+.dieimage {
+	position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    bottom: -300px;
+}
+.die {
+	width: 80px;
+	height: 80px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+	background: #F6F6F6;
+	z-index: 10;
+}
